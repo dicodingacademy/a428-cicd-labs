@@ -1,0 +1,35 @@
+version: 0.2
+
+env:
+  variables:
+    GOOS: darwin
+    GOARCH: amd64
+
+phases:
+  install:
+    commands:
+      - echo "hello from install"
+  
+  pre_build:
+    commands:
+      - echo "hello from pre_build"
+  
+  build:
+    commands:
+      - mv hello-world.go hello-world.go.tmp
+      - envsubst < "hello world.go.tmp" > "hello-world.go"
+      - go build hello-world.go
+  
+  post_build:
+    commands:
+      - echo "hello from post_build"
+
+# reports:
+#
+# cache:
+
+artifacts:
+  files:
+    - 'hello-world'
+    - 'README.txt'
+  name: hello-app-$(date +%Y-%m-%d).zip
