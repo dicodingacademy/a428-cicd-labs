@@ -1,0 +1,18 @@
+    node {
+      agent {
+            docker {
+                image 'node:16-buster-slim'
+                args '-p 3000:3000'
+            }
+        stage('Build') {
+            docker.image('node:16-buster-slim').withRun('-p 3000:3000') {
+                sh 'npm install'
+            }
+        }
+        stage('Test') {
+            docker.image('node:16-buster-slim').withRun('-p 3000:3000') {
+                sh './jenkins/scripts/test.sh'
+            }
+        }
+    }
+    }
