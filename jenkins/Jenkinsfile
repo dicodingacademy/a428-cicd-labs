@@ -19,11 +19,9 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
-        stage('approval') {
-            input {
-                message "sudah yakin akan melakukan deploy?"
-                ok "Deploy"
-                submitter "dicoding"
+        stage('Approval') {
+            steps {
+                input message: 'apakah pipeline siap untuk di deploy?', submitter: 'dicoding'
             }
         }
         stage('Deploy') {
