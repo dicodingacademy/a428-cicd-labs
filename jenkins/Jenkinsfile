@@ -20,13 +20,13 @@ pipeline {
             }
         }
         stage('Deploy') {
+            input {
+                message "Deploy to production?"
+                ok "Deploy"
+                submitter "dicoding"
+            }
             steps {
                 sh './jenkins/scripts/deliver.sh'
-                input {
-                    message "Deploy to production?"
-                    ok "Deploy"
-                    submitter "dicoding"
-                }
                 sh './jenkins/scripts/kill.sh'
             }
         }
