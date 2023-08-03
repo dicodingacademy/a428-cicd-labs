@@ -22,7 +22,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
-                sh 'sleep 60'
+                message "Deploy to production?"
+                ok "Deploy"
+                submitter "dicoding"
                 sh './jenkins/scripts/kill.sh'
             }
         }
