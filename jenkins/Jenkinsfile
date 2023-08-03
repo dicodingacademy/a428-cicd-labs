@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Deploy') {
             input {
-                message "Deploy to production?"
+                message "sudah yakin akan melakukan deploy?"
                 ok "Deploy"
                 submitter "dicoding"
             }
