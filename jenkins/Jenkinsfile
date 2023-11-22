@@ -1,12 +1,9 @@
 pipeline {
     agent {
         docker {
-            image 'node:lts-buster-slim'
+            image 'node:16-buster-slim'
             args '-p 3000:3000'
         }
-    }
-    environment {
-        CI = 'true'
     }
     stages {
         stage('Build') {
@@ -19,11 +16,11 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
-        stage('Deliver') {
+        stage('Deploy') { 
             steps {
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the website? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                sh './jenkins/scripts/deliver.sh' 
+                input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)' 
+                sh './jenkins/scripts/kill.sh' 
             }
         }
     }
