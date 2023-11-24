@@ -3,7 +3,7 @@
 import subprocess
 
 def install_dependencies():
-    subprocess.run(["pip", "install", "-r", "requirements.txt"])
+    subprocess.run(["pip3", "install", "-r", "requirements.txt"])
 
 def main():
     print("Building the Python project...")
