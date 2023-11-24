@@ -4,10 +4,10 @@ node {
     }
 
     stage('Build') {
-        sh 'python build_script.py'
+        sh 'python3 build_script.py'
     }
 
     stage('Test') {
-        sh 'python test_script.py'
+        sh 'python3 test_script.py'
     }
 }
