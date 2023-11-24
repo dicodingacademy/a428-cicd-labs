@@ -9,6 +9,7 @@ def main():
     print("Building the Python project...")
     install_dependencies()
     # Add additional build steps as needed
+    print("Build completed successfully!")
 
 if __name__ == "__main__":
     main()
