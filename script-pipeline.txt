@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    git branch: 'python-app', url: 'https://github.com/syahrulrzk/a428-cicd-labs.git'
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                script {
+                    sh 'python3 build_script.py'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                script {
+                    sh 'python3 test_script.py'
+                }
+            }
+        }
+    }
+}
